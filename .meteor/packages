@@ -24,3 +24,5 @@ useraccounts:materialize
 accounts-password
 twbs:bootstrap
 iron:router
+instamojo:instamojo
+http
