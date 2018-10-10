@@ -3,6 +3,7 @@ import { Template } from 'meteor/templating';
 import { Accounts } from "meteor/accounts-base";
 import { Router } from 'meteor/iron:router';
 
+
 //router
 Router.configure({
   layoutTemplate: 'ApplicationLayout'
@@ -15,8 +16,6 @@ Router.route('/', function () {
     to:"navbar"
   });
 });
-
-
 //Accounts
 Accounts.ui.config({
 passwordSignupFields: "USERNAME_AND_EMAIL"
