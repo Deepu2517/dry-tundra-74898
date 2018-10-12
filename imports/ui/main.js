@@ -50,28 +50,34 @@ Template.user_content.events({
  }
 });
 Template.paymentM.events({
-
-  'submit .payload-js':function(){
+  'submit .payload-js':function(event){
     var payload={
     purpose:"A Unique Identifier",
-    amount: event.target.amount.value,
+    amount: event.target.amount.value ,
     phone:event.target.mobile.value ,
     buyer_name: "John Doe",
-    redirect_url:'#',
+    redirect_url:'http://localhost:3000',
     send_email: false,
-    webhook:'#',
     send_sms: false,
     email: Meteor.user().emails[0].address,
     allow_repeated_payments: false
-  }
+  };
+  Meteor.call("createPaymentRequest",payload,function(error,response){
+    if(error){
+        alert("Request Failed")
+    }else{
+        window.location = response.payment_request.longurl
+    }
+   });
+   //return false;
 
-    //console.log(payload);
-    Payload.update(payload);
+    console.log(payload);
+    //Payload.insert(payload);
     return false;
   },
-
-'click .payrequest':function(){
+/*'click .payrequest':function(){
   payload=Payload.findOne({amount:"event.target.amount.value"});
+  //console.log(payload);
   Meteor.call("createPaymentRequest",payload,function(error,response){
     if(error){
         alert("Request Failed")
@@ -80,5 +86,5 @@ Template.paymentM.events({
     }
    });
    return false;
- }
+ }*/
 });

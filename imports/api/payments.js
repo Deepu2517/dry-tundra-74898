@@ -1,2 +1,2 @@
 import {Mongo} from 'meteor/mongo';
-Payload = new Mongo.Collection("payload");
+Payload = new Mongo.Collection("instamojopay");
